@@ -2,7 +2,7 @@
 
 ## 概要
 
-![image](https://i.gyazo.com/a1fb1ad274a775a3827068960376a0e1.png)
+![image](https://i.gyazo.com/39afe8dda8ef1a6260098d1da229ca0c.png)
 
 このページは 2021/05 におこなわれた Tello EDU をベースにしたドローンコントロールをするためのレクチャーページです。
 
@@ -16,7 +16,7 @@
 
 * 1回目　5月18日
   * Tello EDU の基本操作＋α（カメラ撮影とかもできるよ）
-  * Tello EDU の TCP プロトコルによる制御
+  * Tello EDU の UDP プロトコルによる制御
   * Tello EDU の Node-RED から操作できる＋デモ（単純操作）
   * 質疑応答 30分
 
