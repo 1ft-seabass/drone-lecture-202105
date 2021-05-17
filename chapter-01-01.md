@@ -5,7 +5,7 @@
 * 1回目　5月18日
   * Tello EDU の基本操作＋α（カメラ撮影とかもできるよ）
   * Tello EDU の UDP プロトコルによる制御
-  * Tello EDU の Node-RED から操作できる＋デモ（単純操作）
+  * Tello EDU の Node-RED から操作＆情報取得＋デモ（単純操作）
   * 質疑応答 30分
 
 ## Tello EDU の基本操作＋α（カメラ撮影とかもできるよ）
@@ -136,23 +136,9 @@ PDF データです。
 
 そういうとき、UIもサッと作れて、人と共有しても仕組みが分かりやすい Node-RED はおすすめ。
 
-## Tello EDU の Node-RED から操作できる＋デモ（単純操作）
+## Tello EDU の Node-RED から操作＆情報取得＋デモ（単純操作）
 
-[node\-red\-contrib\-tello \(node\) \- Node\-RED](https://flows.nodered.org/node/node-red-contrib-tello)
-
-最近は Node-RED で Tello を動かすノードが出てきています。三浦さんという IBM Champion が作ったノードです。
-
-三浦さんの記事 → [Node\-REDでTelloを動かすためのノードを作って公開してみた \- KMiura's diary](https://supernove.hatenadiary.jp/entry/2020/12/16/004621)
-
-私の UDP ノードでがんばるところが、良い感じにやってくれるノードです。
-
-### Tello を AP モードで起動
-
-AP モードは、Tello EDU 自身に Wi-Fi アクセスポイントがあり、PC 側から Wi-Fi につないで Tello EDU の IP `192.168.10.1` に指示を出すほうです。
-
-2021/5 現在は、AP モード想定で node-red-contrib-tello ノードは動きます。
-
-![image](https://i.gyazo.com/ebc36e3c4f5bb9bbe285030c28056c78.png)
+![image](https://i.gyazo.com/8fab6059ab3c9c9ce6cc95f5e69f3edf.png)
 
 ### Node-RED を起動
 
@@ -164,31 +150,80 @@ Node-RED は手元のPCにインストールされている前提で進めます
 
 起動したら `http://localhost:1880/` と Chrome ブラウザにアドレス打ち込んで表示します。
 
-### node-red-contrib-tello インストール
+## Node-REDのノードを読み込み
 
-![image](https://i.gyazo.com/7b13264694d458df71dfb09c55667066.png)
+![image](https://i.gyazo.com/be40cf998ec166922760b530734b66d6.png)
 
-右上のメニューから「パレットの管理」をクリック。
+まず右上のメニューを表示します。
 
-![image](https://i.gyazo.com/85d04e2bef80c9cf9321e228f6943dbd.png)
+![image](https://i.gyazo.com/f0422d24736f2355c8cd16e19e29acd9.png)
 
-ユーザー設定ウィンドウが開いたら「パレット」をクリックし「ノードを追加」タブをクリックします。
+こちらに「読み込み」という機能をクリックします。
 
-![image](https://i.gyazo.com/42d939128dc556e2823ef429d5107450.png)
+![image](https://i.gyazo.com/d0724448942eadce5960d0b43f1b3c12.png)
 
-ノードを検索のところに node-red-contrib-tello と入力すると、候補が出てきます。出てきたらノードを追加ボタンを押します。
+クリップボードをクリックします。
 
-![image](https://i.gyazo.com/8b2ce97f5e9cfc185ad1e56abb786233.png)
+```js
+[{"id":"bc2d5655.a445d8","type":"tab","label":"Tello First Step","disabled":false,"info":""},{"id":"25ecbcab.6aff14","type":"udp out","z":"bc2d5655.a445d8","name":"","addr":"192.168.10.1","iface":"","port":"8889","ipv":"udp4","outport":"45678","base64":false,"multicast":"false","x":590,"y":120,"wires":[]},{"id":"a53cf385.2c3a2","type":"inject","z":"bc2d5655.a445d8","name":"","repeat":"","crontab":"","once":false,"onceDelay":"","topic":"","payload":"takeoff","payloadType":"str","x":250,"y":400,"wires":[["25ecbcab.6aff14"]]},{"id":"f1da2730.76ef68","type":"inject","z":"bc2d5655.a445d8","name":"","repeat":"","crontab":"","once":false,"onceDelay":"","topic":"","payload":"land","payloadType":"str","x":250,"y":440,"wires":[["25ecbcab.6aff14"]]},{"id":"22b53cad.20fa04","type":"inject","z":"bc2d5655.a445d8","name":"","repeat":"","crontab":"","once":false,"onceDelay":"","topic":"","payload":"command","payloadType":"str","x":240,"y":80,"wires":[["25ecbcab.6aff14"]]},{"id":"e86e87b4.222648","type":"comment","z":"bc2d5655.a445d8","name":"離着陸操作","info":"","x":240,"y":360,"wires":[]},{"id":"fb0ecdb5.7cd79","type":"udp in","z":"bc2d5655.a445d8","name":"","iface":"","port":"45678","ipv":"udp4","multicast":"false","group":"","datatype":"utf8","x":540,"y":240,"wires":[["d7209c8d.536c6"]]},{"id":"d7209c8d.536c6","type":"debug","z":"bc2d5655.a445d8","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":690,"y":240,"wires":[]},{"id":"a7051b93.daa4e8","type":"comment","z":"bc2d5655.a445d8","name":"ドローン命令の結果受信","info":"","x":590,"y":200,"wires":[]},{"id":"57700d17.00efa4","type":"inject","z":"bc2d5655.a445d8","name":"","repeat":"","crontab":"","once":false,"onceDelay":"","topic":"","payload":"battery?","payloadType":"str","x":240,"y":160,"wires":[["25ecbcab.6aff14"]]},{"id":"d6652dd0.16c4c","type":"comment","z":"bc2d5655.a445d8","name":"コマンド開始","info":"","x":230,"y":40,"wires":[]},{"id":"8b6ebe1d.1b704","type":"comment","z":"bc2d5655.a445d8","name":"バッテリー残量問い合わせ","info":"","x":190,"y":120,"wires":[]},{"id":"64c71155.7589","type":"comment","z":"bc2d5655.a445d8","name":"ドローンへ命令送信","info":"","x":570,"y":80,"wires":[]},{"id":"287554c8.67fe3c","type":"comment","z":"bc2d5655.a445d8","name":"飛行時間（秒）問い合わせ","info":"","x":190,"y":200,"wires":[]},{"id":"d1583a16.4b4158","type":"inject","z":"bc2d5655.a445d8","name":"","repeat":"","crontab":"","once":false,"onceDelay":"","topic":"","payload":"time?","payloadType":"str","x":250,"y":240,"wires":[["25ecbcab.6aff14"]]},{"id":"b459282a.4699a8","type":"inject","z":"bc2d5655.a445d8","name":"","repeat":"","crontab":"","once":false,"onceDelay":"","topic":"","payload":"height?","payloadType":"str","x":250,"y":320,"wires":[["25ecbcab.6aff14"]]},{"id":"3272a394.83c90c","type":"comment","z":"bc2d5655.a445d8","name":"飛行高度（cm）問い合わせ","info":"","x":180,"y":280,"wires":[]}]
+```
 
-通知が出るので追加をクリック。
+こちらをまずコピーして先ほどの画面に戻ります。
 
-![image](https://i.gyazo.com/3075720302a3c5401c03aeda73b0cf1f.png)
+![image](https://i.gyazo.com/24ebed9db0e392f302cbeff3040cb5c9.png)
 
-追加しました となればインストール成功です。
+テキストエリアにペーストして、読み込みボタンが押せるようになるのでクリックして読み込みます！
 
-### 右のパレットに追加されます
+![image](https://i.gyazo.com/ba1f70a97005e253b4ff581eef137373.png)
 
-![image](https://i.gyazo.com/a9708d247747e731f0e7b541d4deca7b.png)
+「Tello First Step」というタブが読み込まれるのでクリックして確認します。
+
+![image](https://i.gyazo.com/f440f707239fdbeb13294379ac091b6a.png)
+
+このようなフローが確認できました。
+
+![image](https://i.gyazo.com/dd3a2e0c1260551d7c0c1ab604409317.png)
+
+忘れず、デプロイボタンをクリックしてフローを反映させましょう。
+
+![image](https://i.gyazo.com/527d5adace0d517b5ed3305a102c972c.png)
+
+デプロイボタンがグレーになり、これで準備完了です！
+
+### Tello EDU を AP モードで起動
+
+では Tello EDU につないでみましょう。
+
+AP モードは、Tello EDU 自身に Wi-Fi アクセスポイントがあり、PC 側から Wi-Fi につないで Tello EDU の IP `192.168.10.1` に指示を出すほうです。
+
+### 注意！
+
+オンラインMTGの場合、Tello EDUにつないでしまうと接続が切れてしまうので、スマートフォンなりで別途つなぎましょう。
+
+→ もしかしたら、私が最初にデモをしてから、半分くらいの人数か、代表者1人がつなぐ構成にするかもしれない。相談
+
+### Tello EDU のアクセスポイントにつなげる
+
+Wi-Fi を探して接続します。
+
+![image](https://i.gyazo.com/ebc36e3c4f5bb9bbe285030c28056c78.png)
+
+### フローを動かしてみる
+
+![image](https://i.gyazo.com/36b6425469e2ef18be5f42f39807e573.png)
+
+以下の流れを試してみます。
+
+![image](https://i.gyazo.com/bdf97bacaa9299aa6d0c1633cb49eecf.png)
+
+* コマンド開始で ok と帰ってくるか試してみる
+* バッテリー・飛行時間・飛行高度も試してみる
+
+![image](https://i.gyazo.com/85eefdbb5c6797afeadaa1189cc5ea94.png)
+
+UDP 8889 ポートで問い合わせたのちに返答された値の送り先を UDP 45678 ポートと決めています。このポート番号はファイアウォールなどPC上のセキュリティで制限されていなければなんでもよいです。
+
+余裕があれば、離着陸も試してみるが、まわりに気をつける必要があるので、次回かもしれない。
 
 ## TIPS
 
@@ -234,7 +269,15 @@ Node-RED は手元のPCにインストールされている前提で進めます
   * 購入時に替えのプロペラはついているので事なきを得たが、そもそも減らしなくなかった！
   * 自分に飛んできたらと考えたら結構怖いと思い直した
 
+## 時間があれば station mode も試してみる
+
+ちゃんとつながる Wi-Fi 環境。および IP を探すツールがないと大変なので、次回の宿題になるかもしれない。相談。
+
 ## 質疑応答
+
+なんでも、どうぞ！
+
+![image](https://i.gyazo.com/ac1fa5944bb2f544f6ce895ac365439f.png)
 
 ## おわりに
 
