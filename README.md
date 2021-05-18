@@ -44,6 +44,14 @@ Node-RED UG 運営。[Node\-RED Con Tokyo 2020を10/10に開催しました](htt
 * [blog](https://www.1ft-seabass.jp/memo/)
 * [twitter](https://twitter.com/1ft_seabass) (@1ft_seabass)
 
+## 質問フォーム
+
+このフォームは授業での質問したいことを書き込む入力フォームです。
+
+お気軽にご質問ください！
+
+https://forms.gle/PUEbKt3zqDmn21WB8
+
 ## 当日の資料
 
 * [1回目レクチャー](./chapter-01-01.md)
