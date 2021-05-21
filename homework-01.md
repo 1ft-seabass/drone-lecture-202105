@@ -62,7 +62,7 @@ node-red-contrib-image-output と入力して検索して、 node-red-contrib-im
 
 ![image](https://i.gyazo.com/c6f1867b4aecd7cc5a022034409bebf8.png)
 
-右側のエリアの中で image というノードが登場していたら成功です。
+左側のエリアの中で image というノードが登場していたら成功です。
 
 ![image](https://i.gyazo.com/e887b76943d9deacc130400a9172c5c9.png)
 
