@@ -275,6 +275,12 @@ https://node-red-ibm-champ-event-tseigo-2021.mybluemix.net/ui/#!/1
 
 例 : [HoloLens1 UWPでTello EDUとUDP連携をして操作するメモ – 1ft\-seabass\.jp\.MEMO](https://www.1ft-seabass.jp/memo/2019/05/04/hololens1-meets-tello-edu/)
 
+### 壊れたかなと思ったらサポート連絡！
+
+* 開発元の Ryze Tech のサポート問い合わせ（メール）はレスポンスも早く良いサポートなので一度聞いてみましょう。結構解決します。
+* プロペラの話も親切に対応いただきました。
+  * [プロペラの時計回り\(cw\)と反時計回り（ccw\)の見分け方を教えてください。それぞれのプロペラを指定の場所に取り付ける必要がありますか？ – DJI製品Q&A \| SYSTEM5](https://info.system5.jp/dronefaq/archives/1987)
+
 ### 参考文献
 
 私の記事で「トイドローン Tello をビジュアルプログラミングツール Node-REDで制御してみよう」という連載があります。参考にしてみてください。
