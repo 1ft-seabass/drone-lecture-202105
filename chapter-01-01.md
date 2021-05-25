@@ -55,7 +55,7 @@ Tello EDU は、2つの Wi-Fi モードがあります。
 STATION モードのくわしい設定のやりかたが、私のブログにあります。
 
 * [Tello EDUをNode\-REDから station mode にして操作するメモ – 1ft\-seabass\.jp\.MEMO](https://www.1ft-seabass.jp/memo/2019/05/01/tello-edu-meets-nodered-setting-station-mode/)
-  * station mode 化を参考にｓましょう。
+  * station mode 化を参考にしましょう。
   * Node-REDで動かすナレッジもあるが、ここは今日教える一歩手前の UDPノードで自前でつなげる」ナレッジなので参考程度に。
 
 ### Wi-Fi 接続はハマるときはハマるので注意
